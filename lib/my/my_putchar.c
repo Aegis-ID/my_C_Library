@@ -5,7 +5,9 @@
 ** some return0 functions
 */
 
-void my_putchar(char c)
+#include <unistd.h>
+
+int my_putchar(char c)
 {
-    write(1, &c, 1);
+    return write(1, &c, 1);
 }

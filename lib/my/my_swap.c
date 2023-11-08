@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2023
 ** day03-06
 ** File description:
-** some return0 functions
+** swap a & b
 */
 
 void my_swap(int *a, int *b)

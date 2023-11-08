@@ -2,8 +2,11 @@
 ** EPITECH PROJECT, 2023
 ** day03-06
 ** File description:
-** some return0 functions
+** Put numbers
 */
+
+#include <unistd.h>
+#include "include/my.h"
 
 int my_put_nbr(int nb)
 {

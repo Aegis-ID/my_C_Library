@@ -2,12 +2,14 @@
 ** EPITECH PROJECT, 2023
 ** day03-06
 ** File description:
-** some return0 functions
+** Positive or negative
 */
 
-int my_isneg(int n)
+#include "include/my.h"
+
+int my_isneg(int nb)
 {
-    if (n < 0) {
+    if (nb < 0) {
         my_putchar('N');
     } else {
         my_putchar('P');

@@ -1,12 +1,29 @@
 /*
 ** EPITECH PROJECT, 2023
-** day03-06
+** my strcat
 ** File description:
-** some return0 functions
+** task02
 */
 
-//return 0
 char *my_strcat(char *dest, char const *src)
 {
-    return 0;
+    int x;
+    int y;
+    int z = 0;
+
+    for (x = 0; src[x] != '\0'; x++) {
+    }
+    x = x - 1;
+    for (y = 0; dest[y] != '\0'; y++) {
+    }
+    y = y - 1;
+    for (int i = 0; i < (x + y + 2); i++) {
+        if (i <= y) {
+        dest[i];
+        } else {
+            dest[i] = src[z];
+            z++;
+        }
+    }
+    return dest;
 }
