@@ -23,6 +23,7 @@ int ll_print_nbr(va_list ap, int len, char **flag)
     print_len += my_putstr(nb_str);
     if (format == 3)
         print_len += treat_width(width, print_len, ' ');
+    free_flag_str(flag, nb_str);
     return len + print_len;
 }
 

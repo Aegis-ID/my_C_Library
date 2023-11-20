@@ -10,10 +10,11 @@
 
 int get_tag_flag(char *flag, int *h_tag)
 {
-    int temp;
+    int temp = 0;
 
     while (*flag) {
-        temp = FLAGS[(int) *flag++];
+        temp = FLAGS[(int) *flag];
+        flag++;
         if (temp == 1)
             *h_tag = 1;
         if (temp == 0)
@@ -27,7 +28,8 @@ void get_other_flag(char *flag, int *format, char *add)
     int temp;
 
     while (*flag) {
-        temp = FLAGS[(int) *flag++];
+        temp = FLAGS[(int) *flag];
+        flag++;
         if ((temp == 2 || temp == 3) && *format < temp)
             *format = temp;
         if ((temp == ' ' || temp == '+') && *add < temp)
@@ -37,19 +39,21 @@ void get_other_flag(char *flag, int *format, char *add)
 
 char *get_full_flag(char const *format)
 {
-    char *begin = (char *) format;
-    int flag_len = 1;
+    char const *begin = format;
+    int flag_len = 2;
     char *flag;
 
-    while (*format && PRINT_ARR[(int) *format] == 0) {
+    format++;
+    while (*format && PRINT_ARR[(int) *format] == 0 && *format != '%') {
         format++;
         flag_len++;
     }
     if (*format == '\0')
-        return begin;
+        return (char *) begin;
     flag = malloc(sizeof(char) * (flag_len + 1));
     for (int i = 0; i < flag_len; i++) {
-        flag[i] = *begin++;
+        flag[i] = *begin;
+        begin++;
     }
     flag[flag_len] = '\0';
     return flag;
@@ -57,25 +61,24 @@ char *get_full_flag(char const *format)
 
 char **extract_modifier(char *flag, int len)
 {
-    char **mod_arr = malloc(sizeof(char *) * 6);
+    char **mod_arr = malloc(sizeof(char *) * 5);
     char *mod = malloc(sizeof(char) * len);
+    int i;
 
-    for (int i = 0; *flag && FLAGS[(int) *flag] != 0; i++) {
-        mod[i] = *flag;
-        flag++;
-    }
+    for (i = 0; flag[i] && FLAGS[(int) flag[i]] != 0; i++)
+        mod[i] = flag[i];
+    flag += i;
+    mod[i] = '\0';
     mod_arr[0] = mod;
     flag = nbr_in_str_arr(flag, len, mod_arr);
     mod = malloc(sizeof(char) * 3);
-    for (int i = 0; *flag && PRINT_ARR[(int) *flag] == 0; i++) {
-        mod[i] = *flag;
-        flag++;
-    }
-    if (PRINT_ARR[(int) *flag] == 0)
-        return 0;
+    for (i = 0; i < 2 &&
+        (PRINT_ARR[(int) flag[i]] == 0 && flag[i] != '%'); i++)
+        mod[i] = flag[i];
+    flag += i;
+    mod[i] = '\0';
     mod_arr[3] = mod;
     mod_arr[4] = flag;
-    mod_arr[5] = 0;
     return mod_arr;
 }
 
@@ -84,6 +87,8 @@ int treat_flag(char **flag, va_list ap, int len)
     int h_tag = 0;
     int length = 0;
 
+    if (*flag[4] == '%')
+        return len + my_putchar('%');
     if (get_tag_flag(flag[0], &h_tag) == 84)
         return len + print_flag(flag);
     for (int i = 0; flag[3][i] != '\0'; i++)

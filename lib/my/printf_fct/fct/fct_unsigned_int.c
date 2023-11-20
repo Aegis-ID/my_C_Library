@@ -6,13 +6,14 @@
 */
 
 #include <stdarg.h>
+#include <stdlib.h>
 #include "include/my.h"
 
 int convert_o(va_list ap, int len, char **flag)
 {
     int width = my_getnbr(flag[1]);
     int	precision = my_getnbr(flag[2] + 1);
-    char add;
+    char add = 0;
     int format = 0;
     char *str = convert_base(va_arg(ap, unsigned int), 8, precision);
     int str_len = my_strlen(str);
@@ -22,6 +23,7 @@ int convert_o(va_list ap, int len, char **flag)
     len += my_putstr(str);
     if (format == 3)
         len += treat_width(width, str_len, ' ');
+    free_flag_str(flag, str);
     return len;
 }
 
@@ -29,7 +31,7 @@ int convert_x(va_list ap, int len, char **flag)
 {
     int width = my_getnbr(flag[1]);
     int	precision = my_getnbr(flag[2] + 1);
-    char add;
+    char add = 0;
     int format = 0;
     char *str = convert_base(va_arg(ap, unsigned int), 16, precision);
     int str_len = my_strlen(str);
@@ -39,6 +41,7 @@ int convert_x(va_list ap, int len, char **flag)
     len += my_putstr(str);
     if (format == 3)
         len += treat_width(width, str_len, ' ');
+    free_flag_str(flag, str);
     return len;
 }
 
@@ -46,7 +49,7 @@ int convert_x_upcase(va_list ap, int len, char **flag)
 {
     int width = my_getnbr(flag[1]);
     int p = my_getnbr(flag[2] + 1);
-    char add;
+    char add = 0;
     int format = 0;
     char *str = my_strupcase(convert_base(va_arg(ap, unsigned int), 16, p));
     int str_len = my_strlen(str);
@@ -56,6 +59,7 @@ int convert_x_upcase(va_list ap, int len, char **flag)
     len += my_putstr(str);
     if (format == 3)
         len += treat_width(width, str_len, ' ');
+    free_flag_str(flag, str);
     return len;
 }
 
@@ -63,7 +67,7 @@ int convert_u(va_list ap, int len, char **flag)
 {
     int width = my_getnbr(flag[1]);
     int precision = my_getnbr(flag[2] + 1);
-    char add;
+    char add = 0;
     int format = 0;
     char *str = convert_base(va_arg(ap, unsigned int), 10, precision);
     int str_len = my_strlen(str);
@@ -73,5 +77,6 @@ int convert_u(va_list ap, int len, char **flag)
     len += my_putstr(str);
     if (format == 3)
         len += treat_width(width, str_len, ' ');
+    free_flag_str(flag, str);
     return len;
 }

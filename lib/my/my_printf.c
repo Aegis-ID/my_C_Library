@@ -21,6 +21,7 @@ char *nbr_in_str_arr(char *flag, int len, char **mod_arr)
         flag++;
         i++;
     }
+    mod[i] = '\0';
     mod_arr[1] = mod;
     mod = malloc(sizeof(char) * len);
     while (*flag == '.' || (len && *flag <= '9' && *flag >= '0')) {
@@ -28,6 +29,7 @@ char *nbr_in_str_arr(char *flag, int len, char **mod_arr)
         j++;
         flag++;
     }
+    mod[j] = '\0';
     mod_arr[2] = mod;
     return flag;
 }
@@ -50,13 +52,14 @@ int my_printf(char const *format, ...)
 
     va_start(ap, format);
     while (*format) {
-        if (*format != '%' || (*format == '%' && *++format == '%')) {
+        if (*format != '%') {
             len += my_putchar(*format);
-            format++;
+            format += 1;
         } else {
             flag = get_full_flag(format);
-            len += for_flag(ap, flag, len);
             format += my_strlen(flag);
+            len += for_flag(ap, flag + 1, len);
+            free(flag);
         }
     }
     va_end(ap);

@@ -61,6 +61,7 @@ int print_flag(char **flag);
 char *get_full_flag(char const *format);
 char **extract_modifier(char *flag, int len);
 char *nbr_in_str_arr(char *flag, int len, char **mod_arr);
+void free_flag_str(char **flag, char *str);
 //my_printf flags:
 int print_char(va_list ap, int len, char **flag);
 int print_str(va_list ap, int len, char **flag);

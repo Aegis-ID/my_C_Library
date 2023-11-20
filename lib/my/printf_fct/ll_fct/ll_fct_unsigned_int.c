@@ -6,6 +6,7 @@
 */
 
 #include <stdarg.h>
+#include <stdlib.h>
 #include "include/my.h"
 
 int ll_convert_o(va_list ap, int len, char **flag)
@@ -22,6 +23,7 @@ int ll_convert_o(va_list ap, int len, char **flag)
     len += my_putstr(str);
     if (format == 3)
         len += treat_width(width, str_len, ' ');
+    free_flag_str(flag, str);
     return len;
 }
 
@@ -40,6 +42,7 @@ int ll_convert_x(va_list ap, int len, char **flag)
     len += my_putstr(str);
     if (format == 3)
         len += treat_width(width, str_len, ' ');
+    free_flag_str(flag, str);
     return len;
 }
 
@@ -58,6 +61,7 @@ int ll_convert_x_upcase(va_list ap, int len, char **flag)
     len += my_putstr(str);
     if (format == 3)
         len += treat_width(width, str_len, ' ');
+    free_flag_str(flag, str);
     return len;
 }
 
@@ -76,5 +80,6 @@ int ll_convert_u(va_list ap, int len, char **flag)
     len += my_putstr(str);
     if (format == 3)
         len += treat_width(width, str_len, ' ');
+    free_flag_str(flag, str);
     return len;
 }

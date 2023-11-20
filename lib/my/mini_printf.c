@@ -8,12 +8,12 @@
 #include <stdarg.h>
 #include "include/my.h"
 
-int cases(const char *format, va_list lptr, int k)
+int b_cases(const char *format, va_list lptr, int k)
 {
     char *s;
     int d;
 
-    switch (format[k++]) {
+    switch (format[k]) {
     case 's':
         s = (va_arg(lptr, char *));
         my_putstr(s);
@@ -30,7 +30,7 @@ int s_cases(const char *format, va_list lptr, int k)
     int i;
     char c;
 
-    switch (format[k++]) {
+    switch (format[k]) {
     case 'c':
         c = (char) va_arg(lptr, int);
         my_putchar(c);
@@ -54,7 +54,7 @@ int mini_printf(char const *format, ...)
     for (k = 0; format[k] != '\0'; k++) {
         if (format[k] == '%') {
             k++;
-            cases(format, lptr, k);
+            b_cases(format, lptr, k);
             s_cases(format, lptr, k);
             va_end(lptr);
         } else {

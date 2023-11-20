@@ -5,6 +5,7 @@
 ** fct used by %g
 */
 
+#include <stdlib.h>
 #include "include/my.h"
 
 int units_len(double nb)
@@ -31,6 +32,7 @@ int print_g_scientific(double nb, int len, char **flag, int precision)
     len += my_putstr(nb_str);
     if (format == 3)
         len += treat_width(width, my_strlen(nb_str), ' ');
+    free_flag_str(flag, nb_str);
     return len;
 }
 
@@ -47,5 +49,6 @@ int print_g_float(double nb, int len, char **flag, int precision)
     len += my_putstr(nb_str);
     if (format == 3)
         len += treat_width(width, my_strlen(nb_str), ' ');
+    free_flag_str(flag, nb_str);
     return len;
 }

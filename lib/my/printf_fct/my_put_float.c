@@ -20,16 +20,9 @@ char *put_decimal(char *str, double nb, int len, int precision)
 
     str[len] = '.';
     len++;
-    if (nb == 0) {
-        for (int i = 0; i < precision; i++)
-            str[len + i] = '0';
-        return str;
-    }
     for (int i = 0; i < precision; i++) {
         nb *= 10;
-        if (i == precision - 1)
-            nb += 0.5;
-        digit = (int) nb;
+        digit = nb;
         str[len + i] = digit + 48;
         nb -= digit;
     }
@@ -63,6 +56,7 @@ char *my_put_float(double nb, int precision)
 {
     double checkpoint = 1;
     int len = 0;
+    double round = 1;
 
     if (nb / 10 == nb && nb > 0)
         return "inf";
@@ -74,5 +68,8 @@ char *my_put_float(double nb, int precision)
         nb = -nb;
         len++;
     }
+    for (int i = 0; i < precision; i++)
+        round /= 10;
+    nb += round / 2;
     return put_units(nb, checkpoint, len, precision);
 }

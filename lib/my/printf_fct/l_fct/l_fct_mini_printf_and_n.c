@@ -23,11 +23,14 @@ int l_print_nbr(va_list ap, int len, char **flag)
     print_len += my_putstr(nb_str);
     if (format == 3)
         print_len += treat_width(width, print_len, ' ');
+    free_flag_str(flag, nb_str);
     return len + print_len;
 }
 
 int l_register_len(va_list ap, int len, char **flag)
 {
+    for (int i = 0; i < 6; i++)
+        free(flag[i]);
     free(flag);
     *va_arg(ap, long int *) = len;
     return len;

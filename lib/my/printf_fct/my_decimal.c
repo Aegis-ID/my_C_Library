@@ -7,7 +7,7 @@
 
 #include "include/my.h"
 
-double my_decimal(double nb)
+double take_decimal(double nb)
 {
     int digit;
     int i = units_len(nb);

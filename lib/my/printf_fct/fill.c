@@ -5,22 +5,35 @@
 ** fill with space or 0 for the given width
 */
 
+#include <stdlib.h>
 #include "include/my.h"
+
+void free_flag_str(char **flag, char *str)
+{
+    for (int i = 0; i < 4; i++)
+        free(flag[i]);
+    free(flag);
+    free(str);
+}
 
 int print_flag(char **flag)
 {
     int len = 0;
 
     len += my_putchar('%');
-    len += my_putstr(flag[0]);
-    len += my_putstr(flag[1]);
+    if (flag[0])
+        len += my_putstr(flag[0]);
+    if (flag[1])
+        len += my_putstr(flag[1]);
     if (*flag[2] == '.') {
         len += my_putchar('.');
         len += my_put_nbr(my_getnbr(flag[2] + 1));
         len += my_putstr(flag[2] + 1);
     }
-    len += my_putstr(flag[3]);
     len += my_putchar(*flag[4]);
+    for (int i = 0; i < 4; i++)
+        free(flag[i]);
+    free(flag);
     return len;
 }
 
@@ -37,7 +50,7 @@ int treat_width(int width, int len, char c)
 int fill_front(int format, char *nb, char add, int width)
 {
     int print_len = 0;
-    int len = my_strlen(nb) + 1;
+    int len = my_strlen(nb);
 
     if (nb[0] != '-' && add != 0 && format != 0)
         print_len += my_putchar(add);

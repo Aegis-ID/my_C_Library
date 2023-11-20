@@ -35,6 +35,7 @@ char *put_lint_in_arr(long long int nbr, int len, int neg, long long int digit)
             digit /= 10;
         }
     }
+    str[len] = '\0';
     return str;
 }
 
@@ -51,9 +52,19 @@ char *put_zero(long long int neg, int len, int precision)
         str[i] = '-';
         i++;
     }
-    for (; len + i <= precision; i++)
+    for (; len + i < precision; i++)
         str[i] = '0';
+    str[i] = '\0';
     return str;
+}
+
+char *freed_return(char *res, char *zero)
+{
+    char *r;
+
+    r = my_strcat(zero, res);
+    free(res);
+    return r;
 }
 
 char *ld_to_s(long long int nbr, int precision)
@@ -74,6 +85,6 @@ char *ld_to_s(long long int nbr, int precision)
         digit *= 10;
         len++;
     }
-    return my_strcat(put_zero(neg, len, precision),
-        put_lint_in_arr(nbr, len, neg, digit));
+    return freed_return(put_lint_in_arr(nbr, len, neg, digit),
+                        put_zero(neg, len, precision));
 }

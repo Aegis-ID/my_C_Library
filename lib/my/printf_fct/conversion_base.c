@@ -45,5 +45,8 @@ char *convert_base(long unsigned int n, int b, int precision)
     intstr = my_strlen(r);
     for (int i = 0; i < precision - intstr; i++)
         zero[i] = '0';
-    return my_strcat(zero, r);
+    zero[precision - intstr] = '\0';
+    zero = my_strcat(zero, r);
+    free(r);
+    return zero;
 }

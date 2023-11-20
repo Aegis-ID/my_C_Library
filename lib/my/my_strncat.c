@@ -5,6 +5,8 @@
 ** task03
 */
 
+#include "include/my.h"
+
 char *my_strncat(char *dest, char const *src, int nb)
 {
     int dest_length = my_strlen(dest);
