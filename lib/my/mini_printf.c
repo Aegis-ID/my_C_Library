@@ -8,7 +8,7 @@
 #include <stdarg.h>
 #include "include/my.h"
 
-int b_cases(const char *format, va_list lptr, int k)
+static void b_cases(const char *format, va_list lptr, int k)
 {
     char *s;
     int d;
@@ -25,7 +25,7 @@ int b_cases(const char *format, va_list lptr, int k)
     }
 }
 
-int s_cases(const char *format, va_list lptr, int k)
+static void s_cases(const char *format, va_list lptr, int k)
 {
     int i;
     char c;
@@ -45,7 +45,7 @@ int s_cases(const char *format, va_list lptr, int k)
     }
 }
 
-int mini_printf(char const *format, ...)
+void mini_printf(char const *format, ...)
 {
     va_list lptr;
     int k = 0;

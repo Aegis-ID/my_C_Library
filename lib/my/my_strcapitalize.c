@@ -8,5 +8,5 @@
 //return 0
 char *my_strcapitalize(char *str)
 {
-    return 0;
+    return str;
 }

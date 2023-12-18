@@ -8,5 +8,5 @@
 //return 0
 int my_is_prime(int nb)
 {
-    return 0;
+    return 84;
 }

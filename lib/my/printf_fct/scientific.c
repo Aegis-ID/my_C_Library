@@ -16,7 +16,7 @@ void add_power(char *res, int pwr, int precision)
     if (pwr > 0)
         res[precision + 3] = '+';
     else {
-        res [precision + 3] = '-';
+        res[precision + 3] = '-';
         pwr = -pwr;
     }
     for (int i = 0; i < 2; i++) {

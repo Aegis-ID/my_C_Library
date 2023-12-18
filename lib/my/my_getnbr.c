@@ -29,7 +29,7 @@ int my_getnbr(char const *str)
     int max = 2147483647;
     char str2[11];
 
-    for (int i = 0; str[i] >= '0' && str[i] <= '9' ||
+    for (int i = 0; (str[i] >= '0' && str[i] <= '9') ||
         str[i] == '-' || str[i] == '+'; i++) {
         if (str[i] >= '0' && str[i] <= '9') {
             str2[char_nbr] = str[i];
@@ -39,5 +39,5 @@ int my_getnbr(char const *str)
     for (int x = 0; x < char_nbr && nbr <= max && nbr >= (max*(-1)); x++) {
         nbr = nbr * 10 + (str2[x] - 48);
     }
-    positivity(str, nbr);
+    return positivity(str, nbr);
 }

@@ -7,9 +7,8 @@
 
 void my_swap(int *a, int *b)
 {
-    int	asave = *a;
-    int	bsave = *b;
+    int tmp = *a;
 
-    *a = bsave;
-    *b = asave;
+    *a = *b;
+    *b = tmp;
 }

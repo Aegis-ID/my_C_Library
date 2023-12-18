@@ -5,6 +5,13 @@
 ## compiling library
 ##
 
+
+NAME	=	libmy.a
+
+CC	=	gcc
+
+CPPFLAGS	=	-W -Wall -Wextra -g -I ../../
+
 SRC	=	my_find_prime_sup.c								\
 		my_isneg.c										\
 		my_put_nbr.c									\
@@ -59,80 +66,18 @@ SRC	=	my_find_prime_sup.c								\
 		mini_printf.c									\
 		my_printf.c
 
-OBJ	=	my_find_prime_sup.o					\
-		my_isneg.o							\
-		my_put_nbr.o						\
-		my_showmem.o						\
-		my_strcapitalize.o					\
-		my_strcpy.o							\
-		my_str_isnum.o						\
-		my_strlen.o							\
-		my_strncmp.o						\
-		my_strupcase.o						\
-		my_compute_power_rec.o				\
-		my_getnbr.o							\
-		my_is_prime.o						\
-		my_putstr.o							\
-		my_showstr.o						\
-		my_strcat.o							\
-		my_str_isalpha.o					\
-		my_str_isprintable.o				\
-		my_strlowcase.o						\
-		my_strncpy.o						\
-		my_swap.o							\
-		my_compute_square_root.o			\
-		my_putchar.o						\
-		my_revstr.o							\
-		my_sort_int_array.o					\
-		my_strcmp.o							\
-		my_str_islower.o					\
-		my_str_isuppper.o					\
-		my_strncat.o						\
-		my_strstr.o							\
-		my_put_float.o						\
-		scientific.o						\
-		conversion_base.o					\
-		ld_to_s.o							\
-		fill.o								\
-		flag.o								\
-		my_intlen.o							\
-		my_decimal.o						\
-		fct_mini_printf_and_n.o				\
-		fct_unsigned_int.o					\
-		fct_double_and_ptr.o				\
-		fct_g_annex.o						\
-		fct_m.o								\
-		l_fct_mini_printf_and_n.o			\
-		l_fct_unsigned_int.o				\
-		ll_fct_mini_printf_and_n.o			\
-		ll_fct_unsigned_int.o				\
-		h_fct_mini_printf_and_n.o 			\
-		h_fct_unsigned_int.o				\
-		hh_fct_mini_printf_and_n.o			\
-		hh_fct_unsigned_int.o				\
-		mini_printf.o						\
-		my_printf.o
+OBJ		=	$(SRC:.c=.o)
 
-NAME	=	libmy.a
+LIB 	=	ar rc
 
-all:	$(NAME)
-
-$(NAME):
-	cp my.h ../../include/
-	cp func_ptr.h ../../include/
-	gcc -I ../../ -Wall -Wextra -c $(SRC)
-	ar rc $(NAME) $(OBJ)
-	cp $(NAME) ../
+all:	$(OBJ)
+		$(LIB) $(NAME) $(OBJ)
+		cp $(NAME) ../../
 
 clean:
 	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
-
-reset:	fclean
-	rm ../../include/func_ptr.h
-	rm ../../include/my.h
-	rm ../$(NAME)
 
 re:	fclean all

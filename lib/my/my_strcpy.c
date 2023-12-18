@@ -5,8 +5,15 @@
 ** some return0 functions
 */
 
-//return 0
-char *my_strcpy(char *dest, char const *src)
+char *my_strcpy(char *dest, const char *src)
 {
-    return 0;
+    char *save = dest;
+
+    while (*src != '\0') {
+        *dest = *src;
+        dest++;
+        src++;
+    }
+    *dest = '\0';
+    return save;
 }

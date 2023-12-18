@@ -8,5 +8,5 @@
 //return 0
 int my_showmem(char const *str, int size)
 {
-    return 0;
+    return 84;
 }

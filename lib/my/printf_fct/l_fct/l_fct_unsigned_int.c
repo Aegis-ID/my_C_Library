@@ -12,7 +12,7 @@
 int l_convert_o(va_list ap, int len, char **flag)
 {
     int width = my_getnbr(flag[1]);
-    int	precision = my_getnbr(flag[2] + 1);
+    int precision = my_getnbr(flag[2] + 1);
     char add;
     int format = 0;
     char *str = convert_base(va_arg(ap, long unsigned int), 8, precision);
@@ -30,7 +30,7 @@ int l_convert_o(va_list ap, int len, char **flag)
 int l_convert_x(va_list ap, int len, char **flag)
 {
     int width = my_getnbr(flag[1]);
-    int	precision = my_getnbr(flag[2] + 1);
+    int precision = my_getnbr(flag[2] + 1);
     char add;
     int format = 0;
     char *str = convert_base(va_arg(ap, long unsigned int), 16, precision);

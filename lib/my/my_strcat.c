@@ -18,9 +18,7 @@ char *my_strcat(char *dest, char const *src)
     }
     y = y - 1;
     for (int i = 0; i < (x + y + 2); i++) {
-        if (i <= y) {
-        dest[i];
-        } else {
+        if (i > y) {
             dest[i] = src[z];
             z++;
         }

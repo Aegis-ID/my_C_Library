@@ -5,15 +5,15 @@
 ** Positive or negative
 */
 
-#include "include/my.h"
+#include <unistd.h>
 
 int my_isneg(int nb)
 {
     if (nb < 0) {
-        my_putchar('N');
+        write(1, "N", 1);
     } else {
-        my_putchar('P');
+        write(1, "P", 1);
     }
-    my_putchar('\n');
+    write(1, "\n", 1);
     return 0;
 }

@@ -63,7 +63,7 @@ int fill_front(int format, char *nb, char add, int width)
         my_putchar('-');
         print_len += treat_width(width, len + print_len, '0');
     } else if (format == 2)
-        print_len += treat_width(width, len + print_len , '0');
+        print_len += treat_width(width, len + print_len, '0');
     return print_len;
 }
 
@@ -81,7 +81,7 @@ int ptr_print_fill_front(int format, int len, char add, int width)
     }
     if (format != 3 && format == 2) {
         print_len += my_putchar(add) + my_putstr("0x");
-        print_len += treat_width(width, len + print_len , '0');
+        print_len += treat_width(width, len + print_len, '0');
     }
     return print_len;
 }

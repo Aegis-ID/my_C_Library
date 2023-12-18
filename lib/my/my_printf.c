@@ -34,7 +34,7 @@ char *nbr_in_str_arr(char *flag, int len, char **mod_arr)
     return flag;
 }
 
-int for_flag(va_list ap, char *flag, int len)
+static int for_flag(va_list ap, char *flag, int len)
 {
     char **mod = extract_modifier(flag, my_strlen(flag));
 

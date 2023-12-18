@@ -5,14 +5,11 @@
 ** some return0 functions
 */
 
-#include "include/my.h"
+#include <unistd.h>
 
-int my_putstr(char const *str)
+void my_putstr(char const *str)
 {
-    int	i = 0;
-
-    while (str[i] != '\0') {
-        my_putchar(str[i]);
-        i = i +	1;
+    for (int i = 0; str[i] != '\0'; i++) {
+        write(1, &str[i], 1);
     }
 }

@@ -8,5 +8,5 @@
 //return 0
 char *my_strstr(char *str, char const *to_find)
 {
-    return 0;
+    return str;
 }

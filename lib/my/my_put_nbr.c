@@ -5,7 +5,6 @@
 ** Put numbers
 */
 
-#include <unistd.h>
 #include "include/my.h"
 
 int my_put_nbr(int nb)

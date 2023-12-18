@@ -8,5 +8,5 @@
 //return 0
 int my_compute_square_root(int nb)
 {
-    return 0;
+    return 84;
 }

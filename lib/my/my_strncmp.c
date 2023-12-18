@@ -8,5 +8,5 @@
 //return 0
 int my_strncmp(char const *s1, char const *s2, int n)
 {
-    return 0;
+    return 84;
 }

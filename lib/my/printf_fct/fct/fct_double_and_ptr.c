@@ -55,7 +55,7 @@ int print_scientific(va_list ap, int len, char **flag)
 int print_float(va_list ap, int len, char **flag)
 {
     int width = my_getnbr(flag[1]);
-    int	precision;
+    int precision;
     char add = 0;
     int format = 0;
     char *nb_str;

@@ -8,5 +8,5 @@
 //return 0
 char *my_strlowcase(char *str)
 {
-    return 0;
+    return str;
 }

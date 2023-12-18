@@ -8,5 +8,5 @@
 //return 0
 char *my_strncpy(char *dest, char const *src, int n)
 {
-    return 0;
+    return src;
 }

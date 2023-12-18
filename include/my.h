@@ -8,6 +8,9 @@
 #ifndef PROTEC
     #define PROTEC
     #include <stdarg.h>
+    #include <stdlib.h>
+    #include <wchar.h>
+    #include <unistd.h>
 
 int my_putchar(char c);
 int my_isneg(int nb);
@@ -104,6 +107,6 @@ int hh_convert_x(va_list ap, int len, char **flag);
 int hh_convert_x_upcase(va_list ap, int len, char **flag);
 int hh_convert_u(va_list ap, int len, char **flag);
 //Final my_printf function:
-int mini_printf(char const *format, ...);
+void mini_printf(char const *format, ...);
 int my_printf(char const *format, ...);
 #endif
