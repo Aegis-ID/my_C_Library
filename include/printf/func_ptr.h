@@ -7,7 +7,7 @@
 
 #ifndef ARRAY_FUNC
     #define ARRAY_FUNC
-    #include "my.h"
+    #include "printf.h"
 
 typedef int (*print)(va_list, int, char **);
 
