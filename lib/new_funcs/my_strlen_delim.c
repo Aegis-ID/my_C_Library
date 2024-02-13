@@ -11,6 +11,7 @@ int my_strlen_delim(char *str, int start, char delim)
 {
     int count;
 
-    for (count = 0; str[start] != delim; count++);
+    for (count = 0; str[start] != delim; count++)
+        start++;
     return count;
 }
