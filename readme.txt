@@ -1,11 +1,9 @@
 My C_Library, containing useful functions for my EPITECH projects.
 
-It contains base functions from my "piscine" at TECH,
-+ Other useful functions I needed for my projects,
-+ CSFML functions for a potential game in C,
+It contains all my "piscine" functions at TECH,
++ new functions I needed for my projects.
 
 make base : for base functions,
-make new : for functions I created not included in base,
+make new : for my new functions,
 make printf : for my_printf,
-make csfml : for csfml lib,
-make all : do I need to specify?
+make all : for... all?

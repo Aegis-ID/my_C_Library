@@ -1,3 +1,5 @@
+.vscode/
+.editorconfig
 tests/
 *log
 *o
