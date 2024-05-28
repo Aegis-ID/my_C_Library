@@ -21,6 +21,6 @@ int my_getnbr(char const *str)
             positivity += 1;
     positivity %= 2;
     if (positivity > 0)
-        return nbr *= -1;
+        return -nbr;
     return nbr;
 }

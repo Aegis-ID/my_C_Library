@@ -15,7 +15,7 @@ bool check_extension(const char *filepath, const char *ext)
     size_t size = 0;
     bool status = false;
 
-    if (parsed_file  == NULL)
+    if (parsed_file == NULL)
         return false;
     size = arraylen((const char **)parsed_file);
     if (my_strcmp(parsed_file[size], ext) == 0)
